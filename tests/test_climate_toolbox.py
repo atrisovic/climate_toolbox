@@ -208,3 +208,9 @@ def test_remove_leap_days_with_clim_data(clim_data):
     da = remove_leap_days(clim_data)
 
     assert leap_day not in da.coords['time'].values
+    
+    
+def test_convert_kelvin_to_celcius(clim_data):
+    ds = convert_kelvin_to_celcius(clim_data, 'temperature')
+    
+    assert 'C' in ds.data_vars['temperature'].units

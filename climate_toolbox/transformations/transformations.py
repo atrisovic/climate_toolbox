@@ -3,6 +3,7 @@ import numpy as np
 
 from climate_toolbox.utils.utils import remove_leap_days
 
+
 def edd_ag(ds_tasmax, ds_tasmin, threshold):
     '''
     Note: there are implicitly three cases:
@@ -32,11 +33,6 @@ def edd_ag(ds_tasmax, ds_tasmin, threshold):
         xarray.Dataset with dimensions ``(hierid, threshold)``
     '''
 
-    # convert from K to C
-    tmax = (ds_tasmax.tasmax - 273.15)
-    tmin = (ds_tasmin.tasmin - 273.15)
-
-    #get the 
     snyder_m = (tmax + tmin)/2
     snyder_w = (tmax - tmin)/2
     snyder_theta = np.arcsin( (threshold - snyder_m)/snyder_w )
