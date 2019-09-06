@@ -164,15 +164,15 @@ def tas_poly(ds, power, varname):
 
     powername = ordinal(power)
 
-    description = format_docstr(('''
-            Daily average temperature (degrees C){raised}
+    #description = format_docstr(('''
+    #        Daily average temperature (degrees C){raised}
 
-            Leap years are removed before counting days (uses a 365 day
-            calendar).
-            '''.format(
-                raised='' if power == 1 else (
-                    ' raised to the {powername} power'
-                    .format(powername=powername)))).strip())
+    #        Leap years are removed before counting days (uses a 365 day
+    #        calendar).
+    #        '''.format(
+    #            raised='' if power == 1 else (
+    #                ' raised to the {powername} power'
+    #                .format(powername=powername)))).strip())
 
     ds1 = xr.Dataset()
 
@@ -196,8 +196,8 @@ def tas_poly(ds, power, varname):
     ds1[varname].attrs['units'] = (
         'C^{}'.format(power) if power > 1 else 'C')
 
-    ds1[varname].attrs['long_title'] = description.splitlines()[0]
-    ds1[varname].attrs['description'] = description
+    #ds1[varname].attrs['long_title'] = description.splitlines()[0]
+    #ds1[varname].attrs['description'] = description
     ds1[varname].attrs['variable'] = varname
 
     return ds1
